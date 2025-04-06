@@ -60,7 +60,8 @@ class Provider extends AbstractProvider
      */
     protected function getOktaServerUrl(): string
     {
-        return $this->getOktaUrl().'/oauth2/'.$this->getAuthServerId();
+        // return $this->getOktaUrl().'/oauth2/'.$this->getAuthServerId();
+        return $this->getOktaUrl().'/'.$this->getAuthServerId();
     }
 
     public static function additionalConfigKeys(): array
@@ -70,12 +71,14 @@ class Provider extends AbstractProvider
 
     protected function getAuthUrl($state): string
     {
-        return $this->buildAuthUrlFromBase($this->getOktaServerUrl().'v1/authorize', $state);
+        // return $this->buildAuthUrlFromBase($this->getOktaServerUrl().'v1/authorize', $state);
+        return $this->buildAuthUrlFromBase($this->getOktaServerUrl().'authorize', $state);
     }
 
     protected function getTokenUrl(): string
     {
-        return $this->getOktaServerUrl().'v1/token';
+        // return $this->getOktaServerUrl().'v1/token';
+        return $this->getOktaServerUrl().'oauth/token';
     }
 
     /**
